@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moment 3</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="cordova.js"></script>
+  <script src="phonegap.js"></script>
+</head>
+<body>
+
+<container class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 q-box">
+      <h4>What is your name?</h2>
+      <input id="name" type="text" name="name">
+      <h4>How old are you?</h2>
+      <input id="age" type="Number" name="age"><br>
+      <button onclick="saveText()" id="save">Save</button>
+    </div>
+    <div class="col-sm-4 a-box">
+      <h4 id="thename">Name:</h2>
+      <h4 id="theage">Age:</h2>
+    </div>
+    <div class="col-sm-4 count-box">
+      <button class="count-btn" onclick='clickCount()'>Click This Button</button>
+      <p id="clicks"></p>
+  </div>
+  </div>
+</container>
+<script>
+
+function saveText() {
+  localStorage.name = document.getElementById('name').value;
+  localStorage.age = document.getElementById('age').value;
+
+  document.getElementById('thename').innerHTML = "Name: " + localStorage.name;
+  document.getElementById('theage').innerHTML = "Age: " + localStorage.age;
+}
+
+
+if (localStorage.getItem('name') != null) {
+  document.getElementById('thename').innerHTML = "Name: " + localStorage.name;
+}
+
+if (localStorage.getItem('name') != null) {
+document.getElementById('theage').innerHTML = "Age: " + localStorage.age;
+}
+
+
+
+
+
+
+function clickCount() {
+  if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount) + 1;
+  } else {
+      localStorage.clickcount = 1;
+  }
+  document.getElementById("clicks").innerHTML = "You have clicked the button " +
+  localStorage.clickcount + " time(s).";
+}
+
+
+</script>
+
+
+
+</body>
+</html>
